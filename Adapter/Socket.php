@@ -107,6 +107,10 @@ class Socket extends AbstractAdapter
 
             $recv = stream_get_contents($this->sock);
 
+            if (!is_string($recv) || strlen($recv) < 1) {
+                break;
+            }
+
             if ($recv === false) {
                 throw new ReadErrorException('Could not read from socket.');
             }
