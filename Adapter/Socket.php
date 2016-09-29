@@ -72,6 +72,7 @@ class Socket extends AbstractAdapter
 
         usleep(1);
         stream_set_blocking($this->sock, 1);
+        stream_set_timeout($this->sock, 30);
 
         if  (is_object($query)) {
             if (isset($query->tld) && ! isset($query->idnFqdn)) {
